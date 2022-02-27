@@ -1,9 +1,9 @@
 module IntSet = Set.Make(Int)
 
 
-let read_lines filename =
+let read_lines (filename: string): string list =
     let channel = open_in filename in
-        let rec loop acc =
+        let rec loop (acc: string list): string list =
             try
                 let line = input_line channel in
                 loop (line :: acc)
@@ -13,8 +13,8 @@ let read_lines filename =
     lines
 
 
-let find_first_repeating_frequency frequency_changes =
-    let rec loop visited_frequencies current_frequency = function
+let find_first_repeating_frequency (frequency_changes: int list): int =
+    let rec loop (visited_frequencies: IntSet.t) (current_frequency: int) = function
         | x :: xs ->
             let frequency = current_frequency + x in
             if IntSet.mem frequency visited_frequencies then frequency
