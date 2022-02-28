@@ -1,5 +1,3 @@
-module CharMap = Map.Make(Char)
-
 
 let read_lines (filename: string): string list =
     let channel = open_in filename in
