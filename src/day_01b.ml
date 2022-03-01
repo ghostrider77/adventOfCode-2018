@@ -3,13 +3,13 @@ module IntSet = Set.Make(Int)
 
 let read_lines (filename: string): string list =
     let channel = open_in filename in
-        let rec loop (acc: string list): string list =
-            try
-                let line = input_line channel in
-                loop (line :: acc)
-            with End_of_file -> List.rev acc in
-        let lines = loop [] in
-        close_in channel;
+    let rec loop (acc: string list): string list =
+        try
+            let line = input_line channel in
+            loop (line :: acc)
+        with End_of_file -> List.rev acc in
+    let lines = loop [] in
+    close_in channel;
     lines
 
 
