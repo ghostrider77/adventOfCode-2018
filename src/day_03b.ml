@@ -28,8 +28,8 @@ let get_or_else (overlaps: ('a, IntSet.t) Hashtbl.t) (key: 'a): IntSet.t =
 
 let add_intersection (overlaps: (int, IntSet.t) Hashtbl.t) (coord: int * int) (ids: IntSet.t) (id: int): unit =
     begin
-    Hashtbl.replace overlaps id (IntSet.union ids (get_or_else overlaps id));
-    IntSet.iter (fun i -> Hashtbl.replace overlaps i (IntSet.add i (get_or_else overlaps i))) ids
+        Hashtbl.replace overlaps id (IntSet.union ids (get_or_else overlaps id));
+        IntSet.iter (fun i -> Hashtbl.replace overlaps i (IntSet.add i (get_or_else overlaps i))) ids
     end
 
 
