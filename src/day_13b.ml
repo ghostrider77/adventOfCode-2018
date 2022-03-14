@@ -121,7 +121,7 @@ let get_last_cart_location (track: track_piece CoordMap.t) (initial_carts: cart 
     let has_cart_crashed ({position = (x, y)}: cart) (cs: cart list): bool =
         List.exists (fun {position = (a, b)} -> a = x && b = y) cs in
     let filter_out_chrashed_carts (carts: cart list) ({position = (x', y')}: cart): cart list =
-        List.filter_map (fun ({position = (x, y)} as c) -> if x = x' && y = y' then None else Some c) carts in
+        List.filter (fun ({position = (x, y)}) -> x <> x' || y <> y') carts in
     let rec move_each_cart (new_carts: cart list) = function
         | [] -> new_carts
         | c :: cs ->
